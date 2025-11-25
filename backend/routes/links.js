@@ -50,9 +50,10 @@ router.post("/", authMiddleware, async (req, res) => {
 
     // -------- checks if code already exists --------
 
-    const { rows } = await db.query("SELECT * FROM links WHERE code = $1", [
-      code,
-    ]);
+    const { rows } = await db.query(
+      "SELECT * FROM links WHERE code = $1 AND user_id = $2",
+      [code, req.user.id]
+    );
 
     if (rows.length > 0) {
       return res.status(400).json({ message: "code already exists" });
@@ -78,13 +79,14 @@ router.post("/", authMiddleware, async (req, res) => {
         [code, long_url, req.user.id]
       );
 
-      return res.send({
-        code,
-        short_url: `${process.env.BASE_URL.replace(/\/$/, "")}/${code}`,
-        long_url,
+      const InsertedCode = await db.query(
+        "SELECT * FROM links WHERE code = $1",
+        [code]
+      );
 
-        last_clicked: null,
-        created_at: new Date().toISOString(),
+      return res.send({
+        ...InsertedCode.rows[0],
+        short_url: `${process.env.BASE_URL.replace(/\/$/, "")}/${code}`,
       });
     }
   } catch (err) {

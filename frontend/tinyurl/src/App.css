@@ -1,0 +1,144 @@
+#root {
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  :root {
+    --container: 960px;
+    --gap: 16px;
+  }
+  body {
+    font-family: Inter, Arial, sans-serif;
+    margin: 0;
+    color: #111;
+  }
+  .container {
+    max-width: var(--container);
+    margin: 20px auto;
+    padding: 0 16px;
+  }
+  .site-header {
+    background: #0b5;
+    padding: 12px 0;
+    margin-bottom: 10px;
+  }
+  .site-header h1 {
+    margin: 0;
+    font-size: 22px;
+    color: #fff;
+  }
+  .site-footer {
+    border-top: 1px solid #eee;
+    padding: 12px 0;
+    margin-top: 30px;
+    text-align: center;
+  }
+  .card {
+    background: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  }
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 140px;
+    gap: 8px;
+    align-items: center;
+  }
+  .form-grid input,
+  .form-grid button {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+  }
+  .form-grid button {
+    background: #111;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  .error {
+    color: #b00020;
+    margin-top: 8px;
+  }
+
+  .links-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  .links-table th,
+  .links-table td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .links-table .truncate {
+    max-width: 360px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .small {
+    padding: 6px 8px;
+    margin-left: 6px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .small.danger {
+    border-color: #ffb0b0;
+    background: #fff3f3;
+    color: #a00;
+  }
+
+  @media (max-width: 720px) {
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+    .links-table th,
+    .links-table td {
+      font-size: 14px;
+    }
+  }
+
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}

@@ -1,6 +1,6 @@
 const { pool } = require("./db");
 
-async function createTables() {
+async function runMigrations() {
   try {
     await pool.query(`
       CREATE TABLE IF NOT EXISTS users (
@@ -28,11 +28,9 @@ async function createTables() {
     `);
 
     console.log("Tables created successfully!");
-    process.exit(0);
   } catch (err) {
     console.error("Error creating tables", err);
-    process.exit(1);
   }
 }
 
-createTables();
+module.exports = runMigrations;

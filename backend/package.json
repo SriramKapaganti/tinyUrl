@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "create-tables": "node createTables.js",
     "start": "node server.js",
     "dev": "nodemon server.js"
   },

@@ -6,6 +6,7 @@ const cors = require("cors");
 const linksRouter = require("./routes/links");
 const authRouter = require("./routes/auth");
 const cookieParser = require("cookie-parser");
+const runMigrations = require("./createTables");
 
 const app = express();
 app.use(
@@ -19,6 +20,10 @@ app.use(
 app.use(cookieParser());
 app.use(express.json());
 
+/*----- DB SCHEMA CREATION -------------*/
+(async () => {
+  await runMigrations();
+})();
 // ----- health check --------
 
 app.get("/healthz", (req, res) => {
